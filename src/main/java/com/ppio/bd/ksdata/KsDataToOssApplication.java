@@ -3,6 +3,7 @@ package com.ppio.bd.ksdata;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
  *
  *  部署在机器   pi-kafka-consumer-01   , 目录  /opt/ksDataToOss
  */
+@EnableScheduling
 @SpringBootApplication
 public class KsDataToOssApplication {
 

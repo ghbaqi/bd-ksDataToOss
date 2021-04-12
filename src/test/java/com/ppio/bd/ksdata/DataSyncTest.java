@@ -17,8 +17,13 @@ public class DataSyncTest {
 
     @Test
     public void t() throws InterruptedException {
-        for (int i = 20210111; i <= 20210119; i++) {
+        for (int i = 20210305; i <= 20210307; i++) {
+            task.sync(i + "", "500err");
+            task.sync(i + "", "cpu");
+            task.sync(i + "", "io_wait");
+            task.sync(i + "", "retran");
             task.sync(i + "", "speed");
+            task.sync(i + "", "upload");
         }
 
         Thread.sleep(1000000L);
