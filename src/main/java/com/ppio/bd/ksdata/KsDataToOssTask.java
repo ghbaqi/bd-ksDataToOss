@@ -32,7 +32,7 @@ public class KsDataToOssTask {
     @Autowired
     private OssConfiguration ossConfiguration;
 
-    public static final String KS_DATA_URL = "http://103.107.219.14:15678/dby71200235777/%s/%s.txt";
+    public static final String KS_DATA_URL = "http://103.107.219.15:4445/pcdn/dby71200235777/%s/%s.txt";
 
 
     @Autowired
