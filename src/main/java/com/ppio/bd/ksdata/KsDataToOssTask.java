@@ -141,6 +141,46 @@ public class KsDataToOssTask {
         sync("upload");
     }
 
+    @Scheduled(cron = "0 25 0 1/1 * ? ")
+    public void hotPushFail() {
+        sync("hotPushFail");
+    }
+
+    @Scheduled(cron = "0 25 0 1/1 * ? ")
+    public void ifaceOffLine() {
+        sync("ifaceOffLine");
+    }
+
+    @Scheduled(cron = "0 25 0 1/1 * ? ")
+    public void reportOffLine() {
+        sync("reportOffLine");
+    }
+
+    @Scheduled(cron = "0 30 0 1/1 * ? ")
+    public void coredump() {
+        sync("coredump");
+    }
+
+    @Scheduled(cron = "0 30 0 1/1 * ? ")
+    public void cachePerG() {
+        sync("cachePerG");
+    }
+
+    @Scheduled(cron = "0 30 0 1/1 * ? ")
+    public void appGtNicBw() {
+        sync("appGtNicBw");
+    }
+
+    @Scheduled(cron = "0 35 0 1/1 * ? ")
+    public void tcpRetran() {
+        sync("tcpRetran");
+    }
+
+    @Scheduled(cron = "0 35 0 1/1 * ? ")
+    public void bwWave() {
+        sync("bwWave");
+    }
+
 
     private class GetKsDataRunnable implements Runnable {
 
