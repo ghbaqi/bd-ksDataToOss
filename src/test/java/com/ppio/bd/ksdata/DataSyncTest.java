@@ -17,14 +17,20 @@ public class DataSyncTest {
 
     @Test
     public void t() throws InterruptedException {
-        task.sync(20210812 + "", "hotPushFail");
-        task.sync(20210812 + "", "ifaceOffLine");
-        task.sync(20210812 + "", "reportOffLine");
-        task.sync(20210812 + "", "coredump");
-        task.sync(20210812 + "", "cachePerG");
-        task.sync(20210812 + "", "appGtNicBw");
-        task.sync(20210812 + "", "tcpRetran");
-        task.sync(20210812 + "", "bwWave");
+
+        int i = 20210812;
+        task.sync(i + "", "io_wait");
+        task.sync(i + "", "retran");
+        task.sync(i + "", "speed");
+        task.sync(i + "", "upload");
+        task.sync(i + "", "hotPushFail");
+        task.sync(i + "", "ifaceOffLine");
+        task.sync(i + "", "reportOffLine");
+        task.sync(i + "", "coredump");
+        task.sync(i + "", "cachePerG");
+        task.sync(i + "", "appGtNicBw");
+        task.sync(i + "", "tcpRetran");
+        task.sync(i + "", "bwWave");
 
 
         //Thread.sleep(1000000L);

@@ -71,7 +71,9 @@ public class KsDataToOssTask {
             if (i == 1) {
                 threadPool.schedule(runnable, 0L, TimeUnit.MINUTES);
             } else {
-                threadPool.schedule(runnable, 30L, TimeUnit.MINUTES);
+                request = builder.build();
+                runnable.setRequest(request);
+                threadPool.schedule(runnable, 10L, TimeUnit.MINUTES);
             }
             try {
                 latch.await();
@@ -188,6 +190,10 @@ public class KsDataToOssTask {
         private CountDownLatch latch;
         private Request request;
         private Response response;
+
+        public void setRequest(Request request) {
+            this.request = request;
+        }
 
         public GetKsDataRunnable(int t, CountDownLatch latch, Request request) {
             this.t = t;
