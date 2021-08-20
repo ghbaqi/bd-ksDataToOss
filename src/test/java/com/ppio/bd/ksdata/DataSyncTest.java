@@ -18,7 +18,8 @@ public class DataSyncTest {
     @Test
     public void t() throws InterruptedException {
 
-        int i = 20210812;
+        int i = 20210819;
+        task.sync(i + "", "500err");
         task.sync(i + "", "io_wait");
         task.sync(i + "", "retran");
         task.sync(i + "", "speed");
