@@ -40,7 +40,7 @@ public class OkHttpConfiguration {
         return new OkHttpClient.Builder()
                 .sslSocketFactory(sslSocketFactory(), x509TrustManager())
                 // 是否开启缓存
-                .retryOnConnectionFailure(false)
+                .retryOnConnectionFailure(true)
                 .connectionPool(pool())
                 .connectTimeout(connectTimeout, TimeUnit.SECONDS)
                 .readTimeout(readTimeout, TimeUnit.SECONDS)

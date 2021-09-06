@@ -73,7 +73,8 @@ public class KsDataToOssTask {
             } else {
                 request = builder.build();
                 runnable.setRequest(request);
-                threadPool.schedule(runnable, 10L, TimeUnit.MINUTES);
+                threadPool.schedule(runnable, i - 1, TimeUnit.MINUTES);
+//                threadPool.schedule(runnable, 1, TimeUnit.MINUTES);
             }
             try {
                 latch.await();

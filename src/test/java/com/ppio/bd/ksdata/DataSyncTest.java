@@ -18,7 +18,8 @@ public class DataSyncTest {
     @Test
     public void t() throws InterruptedException {
 
-        int i = 20210812;
+        int i = 20210822;
+
         task.sync(i + "", "io_wait");
         task.sync(i + "", "retran");
         task.sync(i + "", "speed");
@@ -31,6 +32,8 @@ public class DataSyncTest {
         task.sync(i + "", "appGtNicBw");
         task.sync(i + "", "tcpRetran");
         task.sync(i + "", "bwWave");
+        task.sync(i + "", "500err");
+        task.sync(i + "", "cpu");
 
 
         //Thread.sleep(1000000L);

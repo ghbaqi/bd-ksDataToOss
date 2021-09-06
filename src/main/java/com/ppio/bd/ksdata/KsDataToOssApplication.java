@@ -12,7 +12,8 @@ import org.springframework.web.client.RestTemplate;
  *  *
  *  * 生产环境
  *
- *  部署在机器   pi-kafka-consumer-01   , 目录  /opt/ksDataToOss
+ *
+ *  部署在机器   172.16.76.185   ,   目录  /opt/ksDataToOss
  */
 @EnableScheduling
 @SpringBootApplication
