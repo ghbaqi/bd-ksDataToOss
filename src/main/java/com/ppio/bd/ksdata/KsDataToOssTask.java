@@ -104,6 +104,7 @@ public class KsDataToOssTask {
         PutObjectResult result = oss.putObject(bucketName, objectName, is);
         log.info(result.toString());
         oss.shutdown();
+        response.close();
     }
 
     private void sync(String biz) {
