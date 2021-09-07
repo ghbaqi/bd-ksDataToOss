@@ -19,8 +19,8 @@ public class DataSyncTest {
     public void t() throws InterruptedException {
 
 
-        int i = 20210906;
-        String noonNight = "night";
+        int i = 20210907;
+        String noonNight = "noon";
         task.sync(i + "", noonNight, "ifaceOffLine");
         task.sync(i + "", noonNight, "reportOffLine");
         task.sync(i + "", noonNight, "coredump");
