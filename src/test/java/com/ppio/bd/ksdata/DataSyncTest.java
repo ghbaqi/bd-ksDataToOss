@@ -19,22 +19,23 @@ public class DataSyncTest {
     public void t() throws InterruptedException {
 
 
-        int i = 20210819;
-        task.sync(i + "", "500err");
-        task.sync(i + "", "io_wait");
-        task.sync(i + "", "retran");
-        task.sync(i + "", "speed");
-        task.sync(i + "", "upload");
-        task.sync(i + "", "hotPushFail");
-        task.sync(i + "", "ifaceOffLine");
-        task.sync(i + "", "reportOffLine");
-        task.sync(i + "", "coredump");
-        task.sync(i + "", "cachePerG");
-        task.sync(i + "", "appGtNicBw");
-        task.sync(i + "", "tcpRetran");
-        task.sync(i + "", "bwWave");
-        task.sync(i + "", "500err");
-        task.sync(i + "", "cpu");
+        int i = 20210906;
+        String noonNight = "night";
+        task.sync(i + "", noonNight, "ifaceOffLine");
+        task.sync(i + "", noonNight, "reportOffLine");
+        task.sync(i + "", noonNight, "coredump");
+        task.sync(i + "", noonNight, "cachePerG");
+        task.sync(i + "", noonNight, "appGtNicBw");
+        task.sync(i + "", noonNight, "tcpRetran");
+        task.sync(i + "", noonNight, "bwWave");
+        task.sync(i + "", noonNight, "ioWait");
+        task.sync(i + "", noonNight, "hotPushFailed");
+        task.sync(i + "", noonNight, "ispIdentifyError");
+        task.sync(i + "", noonNight, "natIdentifyError");
+        task.sync(i + "", noonNight, "lineSpeedError");
+        task.sync(i + "", noonNight, "err500");
+        task.sync(i + "", noonNight, "cpuTooHigh");
+        task.sync(i + "", noonNight, "speedTooLow");
 
 
         //Thread.sleep(1000000L);

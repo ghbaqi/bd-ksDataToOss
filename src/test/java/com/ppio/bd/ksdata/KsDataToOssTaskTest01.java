@@ -17,6 +17,6 @@ public class KsDataToOssTaskTest01 {
     @Test
     public void t() throws Exception {
 
-        task._500err();
+        //task._500err();
     }
 }

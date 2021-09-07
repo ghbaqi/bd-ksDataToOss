@@ -32,7 +32,10 @@ public class KsDataToOssTask {
     @Autowired
     private OssConfiguration ossConfiguration;
 
-    public static final String KS_DATA_URL = "http://103.107.219.15:4445/pcdn/dby71200235777/%s/%s.txt";
+    //public static final String KS_DATA_URL = "http://103.107.219.15:4445/pcdn/dby71200235777/%s/%s.txt";
+    //http://103.107.219.15:4445/pcdn/ks2021/20210904/noon/err500.txt   午高峰数据
+    //http://103.107.219.15:4445/pcdn/ks2021/20210904/night/err500.txt  晚高峰数据
+    public static final String KS_DATA_URL = "http://103.107.219.15:4445/pcdn/dby71200235777/%s/%s/%s.txt";
 
 
     @Autowired
@@ -47,17 +50,21 @@ public class KsDataToOssTask {
     String bucketName = "ks-error-data";
     // <yourObjectName>上传文件到OSS时需要指定包含文件后缀在内的完整路径，例如abc/efg/123.jpg。
 
-    public void sync(String dateStr, String biz) {
+    public void sync(String dateStr, String noonNight, String biz) {
 
         if (dateStr == null || dateStr.trim().equals("")) {
             LocalDate localDate = LocalDate.now().minusDays(1);
             dateStr = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         }
+        if (noonNight == null || noonNight.trim().equals("")) {
+            noonNight = "noon";
+        }
         biz = biz.trim();
 
         Request.Builder builder = new Request.Builder();
 
-        String url = String.format(KS_DATA_URL, dateStr, biz);
+        String url = String.format(KS_DATA_URL, dateStr, noonNight, biz);
+        System.out.println(url);
         builder.url(url);
         Request request = builder.build();
         Response response = null;
@@ -97,8 +104,8 @@ public class KsDataToOssTask {
         }
 
 
-        log.info("往 oss 发送 {} 数据 , dt = {}", biz, dateStr);
-        String objectName = dateStr + "/" + biz + ".txt";
+        log.info("往 oss 发送 {} 数据 ,午晚高峰{}, dt = {}", biz, noonNight, dateStr);
+        String objectName = dateStr + "/" + noonNight + "/" + biz + ".txt";
         InputStream is = response.body().byteStream();
         OSS oss = ossConfiguration.getOssClient();
         PutObjectResult result = oss.putObject(bucketName, objectName, is);
@@ -107,83 +114,194 @@ public class KsDataToOssTask {
         response.close();
     }
 
-    private void sync(String biz) {
-        sync(null, biz);
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_ifaceOffLine() {
+        sync(null, "noon", "ifaceOffLine");
     }
 
+    ;
 
-    @Scheduled(cron = "0 10 0 1/1 * ? ")
-    public void _500err() {
-        sync("500err");
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_reportOffLine() {
+        sync(null, "noon", "reportOffLine");
     }
 
-    @Scheduled(cron = "0 10 0 1/1 * ? ")
-    public void _cpu() {
-        sync("cpu");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_coredump() {
+        sync(null, "noon", "coredump");
     }
 
+    ;
 
-    @Scheduled(cron = "0 15 0 1/1 * ? ")
-    public void io_wait() {
-        sync("io_wait");
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_cachePerG() {
+        sync(null, "noon", "cachePerG");
     }
 
+    ;
 
-    @Scheduled(cron = "0 15 0 1/1 * ? ")
-    public void retran() {
-        sync("retran");
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_appGtNicBw() {
+        sync(null, "noon", "appGtNicBw");
     }
 
-    @Scheduled(cron = "0 20 0 1/1 * ? ")
-    public void speed() {
-        sync("speed");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_tcpRetran() {
+        sync(null, "noon", "tcpRetran");
     }
 
+    ;
 
-    @Scheduled(cron = "0 20 0 1/1 * ? ")
-    public void upload() {
-        sync("upload");
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_bwWave() {
+        sync(null, "noon", "bwWave");
     }
 
-    @Scheduled(cron = "0 25 0 1/1 * ? ")
-    public void hotPushFail() {
-        sync("hotPushFail");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_ioWait() {
+        sync(null, "noon", "ioWait");
     }
 
-    @Scheduled(cron = "0 25 0 1/1 * ? ")
-    public void ifaceOffLine() {
-        sync("ifaceOffLine");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_hotPushFailed() {
+        sync(null, "noon", "hotPushFailed");
     }
 
-    @Scheduled(cron = "0 25 0 1/1 * ? ")
-    public void reportOffLine() {
-        sync("reportOffLine");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_ispIdentifyError() {
+        sync(null, "noon", "ispIdentifyError");
     }
 
-    @Scheduled(cron = "0 30 0 1/1 * ? ")
-    public void coredump() {
-        sync("coredump");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_natIdentifyError() {
+        sync(null, "noon", "natIdentifyError");
     }
 
-    @Scheduled(cron = "0 30 0 1/1 * ? ")
-    public void cachePerG() {
-        sync("cachePerG");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_lineSpeedError() {
+        sync(null, "noon", "lineSpeedError");
     }
 
-    @Scheduled(cron = "0 30 0 1/1 * ? ")
-    public void appGtNicBw() {
-        sync("appGtNicBw");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_err500() {
+        sync(null, "noon", "err500");
     }
 
-    @Scheduled(cron = "0 35 0 1/1 * ? ")
-    public void tcpRetran() {
-        sync("tcpRetran");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_cpuTooHigh() {
+        sync(null, "noon", "cpuTooHigh");
     }
 
-    @Scheduled(cron = "0 35 0 1/1 * ? ")
-    public void bwWave() {
-        sync("bwWave");
+    ;
+
+    @Scheduled(cron = "0 30 14 1/1 * ? ")
+    public void noon_speedTooLow() {
+        sync(null, "noon", "speedTooLow");
     }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_ifaceOffLine() {
+        sync(null, "night", "ifaceOffLine");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_reportOffLine() {
+        sync(null, "night", "reportOffLine");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_coredump() {
+        sync(null, "night", "coredump");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_cachePerG() {
+        sync(null, "night", "cachePerG");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_appGtNicBw() {
+        sync(null, "night", "appGtNicBw");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_tcpRetran() {
+        sync(null, "night", "tcpRetran");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_bwWave() {
+        sync(null, "night", "bwWave");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_ioWait() {
+        sync(null, "night", "ioWait");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_hotPushFailed() {
+        sync(null, "night", "hotPushFailed");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_ispIdentifyError() {
+        sync(null, "night", "ispIdentifyError");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_natIdentifyError() {
+        sync(null, "night", "natIdentifyError");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 1/1 * ? ")
+    public void night_lineSpeedError() {
+        sync(null, "night", "lineSpeedError");
+    }
+
+    ;
 
 
     private class GetKsDataRunnable implements Runnable {
