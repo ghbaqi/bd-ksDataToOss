@@ -53,7 +53,7 @@ public class KsDataToOssTask {
     public void sync(String dateStr, String noonNight, String biz) {
 
         if (dateStr == null || dateStr.trim().equals("")) {
-            LocalDate localDate = LocalDate.now().minusDays(1);
+            LocalDate localDate = LocalDate.now().minusDays(0);
             dateStr = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         }
         if (noonNight == null || noonNight.trim().equals("")) {
@@ -114,7 +114,7 @@ public class KsDataToOssTask {
         response.close();
     }
 
-    LocalDate localDate = LocalDate.now().minusDays(1);
+    LocalDate localDate = LocalDate.now().minusDays(0);
     String dateStr = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
     @Scheduled(cron = "0 30 14 * * ?")
