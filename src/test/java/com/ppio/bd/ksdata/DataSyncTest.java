@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -18,8 +21,9 @@ public class DataSyncTest {
     @Test
     public void t() throws InterruptedException {
 
-
-        int i = 20210908;
+        LocalDate localDate = LocalDate.now().minusDays(0);
+        String i = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        //int i = 20210908;
         String noonNight = "noon";
         task.sync(i + "", noonNight, "ifaceOffLine");
         task.sync(i + "", noonNight, "reportOffLine");

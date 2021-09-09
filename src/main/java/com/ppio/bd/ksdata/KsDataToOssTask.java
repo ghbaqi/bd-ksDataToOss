@@ -114,194 +114,192 @@ public class KsDataToOssTask {
         response.close();
     }
 
-    LocalDate localDate = LocalDate.now().minusDays(0);
-    String dateStr = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_ifaceOffLine() {
-        sync(dateStr, "noon", "ifaceOffLine");
+        sync(null, "noon", "ifaceOffLine");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_reportOffLine() {
-        sync(dateStr, "noon", "reportOffLine");
+        sync(null, "noon", "reportOffLine");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_coredump() {
-        sync(dateStr, "noon", "coredump");
+        sync(null, "noon", "coredump");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_cachePerG() {
-        sync(dateStr, "noon", "cachePerG");
+        sync(null, "noon", "cachePerG");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_appGtNicBw() {
-        sync(dateStr, "noon", "appGtNicBw");
+        sync(null, "noon", "appGtNicBw");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_tcpRetran() {
-        sync(dateStr, "noon", "tcpRetran");
+        sync(null, "noon", "tcpRetran");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_bwWave() {
-        sync(dateStr, "noon", "bwWave");
+        sync(null, "noon", "bwWave");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_ioWait() {
-        sync(dateStr, "noon", "ioWait");
+        sync(null, "noon", "ioWait");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_hotPushFailed() {
-        sync(dateStr, "noon", "hotPushFailed");
+        sync(null, "noon", "hotPushFailed");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_ispIdentifyError() {
-        sync(dateStr, "noon", "ispIdentifyError");
+        sync(null, "noon", "ispIdentifyError");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_natIdentifyError() {
-        sync(dateStr, "noon", "natIdentifyError");
+        sync(null, "noon", "natIdentifyError");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_lineSpeedError() {
-        sync(dateStr, "noon", "lineSpeedError");
+        sync(null, "noon", "lineSpeedError");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_err500() {
-        sync(dateStr, "noon", "err500");
+        sync(null, "noon", "err500");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_cpuTooHigh() {
-        sync(dateStr, "noon", "cpuTooHigh");
+        sync(null, "noon", "cpuTooHigh");
     }
 
     ;
 
     @Scheduled(cron = "0 30 14 * * ?")
     public void noon_speedTooLow() {
-        sync(dateStr, "noon", "speedTooLow");
+        sync(null, "noon", "speedTooLow");
     }
 
     ;
 
-    @Scheduled(cron = "0 30 14 * * ?")
+    @Scheduled(cron = "0 30 23 * * ?")
     public void night_ifaceOffLine() {
-        sync(dateStr, "night", "ifaceOffLine");
+        sync(null, "night", "ifaceOffLine");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_reportOffLine() {
-        sync(dateStr, "night", "reportOffLine");
+        sync(null, "night", "reportOffLine");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_coredump() {
-        sync(dateStr, "night", "coredump");
+        sync(null, "night", "coredump");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_cachePerG() {
-        sync(dateStr, "night", "cachePerG");
+        sync(null, "night", "cachePerG");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_appGtNicBw() {
-        sync(dateStr, "night", "appGtNicBw");
+        sync(null, "night", "appGtNicBw");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_tcpRetran() {
-        sync(dateStr, "night", "tcpRetran");
+        sync(null, "night", "tcpRetran");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_bwWave() {
-        sync(dateStr, "night", "bwWave");
+        sync(null, "night", "bwWave");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_ioWait() {
-        sync(dateStr, "night", "ioWait");
+        sync(null, "night", "ioWait");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_hotPushFailed() {
-        sync(dateStr, "night", "hotPushFailed");
+        sync(null, "night", "hotPushFailed");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_ispIdentifyError() {
-        sync(dateStr, "night", "ispIdentifyError");
+        sync(null, "night", "ispIdentifyError");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_natIdentifyError() {
-        sync(dateStr, "night", "natIdentifyError");
+        sync(null, "night", "natIdentifyError");
     }
 
     ;
 
     @Scheduled(cron = "0 30 23 * * ?")
     public void night_lineSpeedError() {
-        sync(dateStr, "night", "lineSpeedError");
+        sync(null, "night", "lineSpeedError");
     }
 
     ;
