@@ -25,18 +25,18 @@ public class DataSyncTest {
         String i = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         //int i = 20210908;
         String noonNight = "noon";
-        task.sync(i + "", noonNight, "ifaceOffLine");
-        task.sync(i + "", noonNight, "reportOffLine");
-        task.sync(i + "", noonNight, "coredump");
-        task.sync(i + "", noonNight, "cachePerG");
-        task.sync(i + "", noonNight, "appGtNicBw");
-        task.sync(i + "", noonNight, "tcpRetran");
-        task.sync(i + "", noonNight, "bwWave");
-        task.sync(i + "", noonNight, "ioWait");
-        task.sync(i + "", noonNight, "hotPushFailed");
-        task.sync(i + "", noonNight, "ispIdentifyError");
-        task.sync(i + "", noonNight, "natIdentifyError");
-        task.sync(i + "", noonNight, "lineSpeedError");
+        task.sync(i + "", noonNight, "ifaceOffLine");//
+        task.sync(i + "", noonNight, "reportOffLine");//
+        task.sync(i + "", noonNight, "coredump");//
+        task.sync(i + "", noonNight, "cachePerG");//
+        task.sync(i + "", noonNight, "appGtNicBw");//
+        task.sync(i + "", noonNight, "tcpRetran");//
+        task.sync(i + "", noonNight, "bwWave");//
+        task.sync(i + "", noonNight, "ioWait");//
+        task.sync(i + "", noonNight, "hotPushFailed");//
+        task.sync(i + "", noonNight, "ispIdentifyError");//
+        task.sync(i + "", noonNight, "natIdentifyError");//
+        task.sync(i + "", noonNight, "lineSpeedError");//
         task.sync(i + "", noonNight, "err500");
         task.sync(i + "", noonNight, "cpuTooHigh");
         task.sync(i + "", noonNight, "speedTooLow");

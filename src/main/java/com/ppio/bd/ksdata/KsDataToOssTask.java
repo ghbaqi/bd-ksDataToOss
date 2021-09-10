@@ -304,6 +304,26 @@ public class KsDataToOssTask {
 
     ;
 
+    @Scheduled(cron = "0 30 23 * * ?")
+    public void night_err500() {
+        sync(null, "night", "err500");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 * * ?")
+    public void night_cpuTooHigh() {
+        sync(null, "night", "cpuTooHigh");
+    }
+
+    ;
+
+    @Scheduled(cron = "0 30 23 * * ?")
+    public void night_speedTooLow() {
+        sync(null, "night", "speedTooLow");
+    }
+
+    ;
 
     private class GetKsDataRunnable implements Runnable {
 
